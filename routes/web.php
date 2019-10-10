@@ -19,5 +19,4 @@ Route::get('/', 'HomeController@home')
 Route::get('/contact', 'HomeController@contact')
     ->name('contact');
 
-Route::get('/blog-post/{id}', 'HomeController@blogPost')
-    ->name('blogPost');
+Route::resource('/posts', 'PostController')->only(['index', 'show', 'create', 'store']);
