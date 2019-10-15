@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BlogPost;
 use App\Http\Requests\StorePost;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -51,9 +52,21 @@ class PostController extends Controller
 
         $post->fill($validatedData);
         $post->save();
-        
+
         $request->session()->flash('status', 'Blog post was updated!');
 
         return redirect(route('posts.show', ['post' => $post->id]));
+    }
+
+    public function destroy($id, Request $request)
+    {
+        $post = BlogPost::findOrFail($id);
+        $post->delete();
+
+        // BlogPost::destroy($id); // jeśli nie zależy nam na sprawdzeniu, czy element, który chcemu usunąć istnieje
+
+        $request->session()->flash('status', 'Blog post was deleted!');
+
+        return redirect()->route('posts.index');
     }
 }

@@ -19,5 +19,4 @@ Route::get('/', 'HomeController@home')
 Route::get('/contact', 'HomeController@contact')
     ->name('contact');
 
-Route::resource('/posts', 'PostController')
-    ->only(['index', 'show', 'create', 'store', 'edit', 'update']);
+Route::resource('/posts', 'PostController');

@@ -2,6 +2,7 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <title>Document</title>
 </head>
 <body>
@@ -19,5 +20,7 @@
 @endif
 
 @yield('content')
+
+<script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
